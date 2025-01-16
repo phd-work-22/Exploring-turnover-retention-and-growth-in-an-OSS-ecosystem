@@ -54,3 +54,6 @@ Given Gentoo's extensive repository of 170 categories, we selected a representat
 
 **Calculating workforce dynamics**
 We analyzed three key workforce dynamics—retention, turnover and growth rates—within the sampled categories. Please see our paper for more details of the workforce dynamics.
+
+
+**All the supplementary files are provided under the supplementary files branch**
