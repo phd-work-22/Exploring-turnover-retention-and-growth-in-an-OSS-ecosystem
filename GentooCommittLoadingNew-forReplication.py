@@ -14,7 +14,7 @@ connection = pymysql.connect(host='localhost',
                              charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
 try:
-    dt1=datetime(2022,6,9,0,0,1)
+    dt1=datetime(2022,1,1,0,0,1)
     dt2=datetime(2023,3,31,23,59,59)
     #for commit in Repository ('/mnt/D/gentooCommitHistory/historical').traverse_commits():
     for commit in Repository ('/mnt/D/gentooCommitsNew/gentoo', since=dt1, to=dt2).traverse_commits():
