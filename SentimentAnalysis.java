@@ -17,21 +17,18 @@ import java.util.regex.Pattern;
 
 /**
  *
- * @author p306654
+ * @author tien tulili
  */
 public class SentimentAnalysis {
     public static void main(String[] args) throws IOException {
         try {  
             Class.forName("com.mysql.cj.jdbc.Driver");  
             try (Connection con = DriverManager.getConnection(  
-                    "jdbc:mysql://localhost:3306/mlstats_gentoo","admin","Admin@123")) {
+                    "jdbc:mysql://localhost:3306/mlstats_gentoo","your_username","your_password")) {
                
                 Statement stmt=con.createStatement();
                 ResultSet rs=stmt.executeQuery(
-                        //"select message_id, message_body from messages");
-                        "select message_id, message_body from mlstats_gentoo.master_gentoo \n" +
-" where date_format(date_sent, '%Y') = '2022' and date_format(date_sent, '%m')  >= '07' and date_format(date_sent, '%d')  >= '18'");
-                        //"select message_id, message_body from master_gentoo where date_format(date_sent, '%Y') >= '2022'");   
+                        "select message_id, message_body from messages"); 
 
                 String comments; 
                 Integer id = 1;
@@ -40,7 +37,7 @@ public class SentimentAnalysis {
                 
                 //write the messages from DB to a file
                 try ( //All messages from the database are retrieved and written into a file
-                        FileWriter fileWriter = new FileWriter("/home/p306654/Documents/SEfiles/gentoo_mlists_2022.txt");
+                        FileWriter fileWriter = new FileWriter("/your_filepath/gentoo_mlists_2022.txt");
                         PrintWriter printWriter = new PrintWriter(fileWriter)) {
                     //write the messages from DB to a file
                     while(rs.next()) {
@@ -55,9 +52,6 @@ public class SentimentAnalysis {
                       PreparedStatement preparedStmt = con.prepareStatement(query);
                         preparedStmt.setString (1, id.toString());
                         preparedStmt.setString (2, rs.getString("message_id"));
-
-                      // execute the preparedstatement
-//                        preparedStmt.execute();
                         id++;
     
                     }
@@ -69,14 +63,14 @@ public class SentimentAnalysis {
                 * of the messagess' authors.
                 */
                 
-                File file = new File( "/home/p306654/Documents/SEfiles/gentoo_mlists_2022.txt");
+                File file = new File( "/your_filepath/gentoo_mlists_2022.txt");
                 
                 try (BufferedReader br = new BufferedReader(new FileReader(file))) {
                     String kommen;
                     String textBuffer="";
                     int i=0;
                     
-                    File normFiles = new File( "/home/p306654/Documents/SEfiles/gentoo_mlists_normalised_messages_2022.txt");
+                    File normFiles = new File( "/your_filepath/gentoo_mlists_normalised_messages_2022.txt");
                     PrintWriter printWriter = new PrintWriter(normFiles);
                     //check each sentence if it contains http, reply message, ignore it
                     while ((kommen = br.readLine()) != null) {
