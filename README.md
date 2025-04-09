@@ -16,7 +16,7 @@ The steps of conducting our work for replication purpose:
    hashes and file paths. These details enabled precise mapping of developer activities to specific categories within the Gentoo ecosystem.
    The source code used for loading the commits data into the database was _GentooCommitLoading.py_
    
-   All the dataset are available by request.
+   
    
 2. Data Preprocessing
 2.1 Mailing list preprocessing
@@ -29,8 +29,8 @@ The output of this file wasgentoo_mlists_normalised_komen.txt.
  
 This process resulted in a clean dataset of 662,731 sentences, each assigned a sentiment score using the SentiStrength-SE tool. 
 
-Source code for sentiment labeling: ExecuteSentistrengthSE.java; output: results of sentimen analysis gentoo mlists.txt. File included is sentistrength.sh. In order to giving the scores to each sentence, we have to compile and run the ExecuteSentistrengthSE.java together with file 'gentoo_mlists_normalised_komen.txt' as its input and its ouput as 'results of sentimen analysis gentoo mlists.txt'. 
-The 'results of sentimen analysis gentoo mlists.txt' was put into a table in the database and the code used was InsertingResults.java
+Source code for sentiment labeling: _ExecuteSentistrengthSE.java_; output: _results of sentimen analysis gentoo mlists.txt_. File included is _sentistrength.sh_. In order to giving the scores to each sentence, we have to compile and run the _ExecuteSentistrengthSE.java_ together with file '_gentoo_mlists_normalised_komen.txt_' as its input and its ouput as '_results of sentimen analysis gentoo mlists.txt_'. 
+The '_results of sentimen analysis gentoo mlists.txt_' was put into a table in the database and the code used was _InsertingResults.java_
 
 3. Data Analysis
 
@@ -47,4 +47,6 @@ The code used was _hmaps-sentiment-standardnorm.R_
 **Calculating workforce dynamics**
 We analyzed three key workforce dynamics—retention, turnover and growth rates—within the sampled categories. 
 The codes used were _analysing RR TR GR monthly-for replication.R_ and _calculating matrix corr-for replication.R_
+
 Please see our paper for more details of the workforce dynamics.
+All the dataset are available by request.
