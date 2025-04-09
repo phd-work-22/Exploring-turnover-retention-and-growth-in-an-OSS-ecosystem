@@ -18,7 +18,7 @@ import java.util.StringTokenizer;
 
 /**
  *
- * @author p306654
+ * @author tien tulili
  */
 public class InsertingResults {
     public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException,
@@ -26,7 +26,7 @@ public class InsertingResults {
         try {  
             Class.forName("com.mysql.cj.jdbc.Driver");  
             try (Connection con = DriverManager.getConnection(  
-                    "jdbc:mysql://localhost:3306/mlstats_gentoo","admin","Admin@123")) {
+                    "jdbc:mysql://localhost:3306/mlstats_gentoo","your_username","your_password")) {
                 
                 String query = " insert into sentiments_on_messages "
                              + "(message_id, sentence, pos_score, neg_score)"
@@ -36,8 +36,7 @@ public class InsertingResults {
                 PreparedStatement preparedStmt = con.prepareStatement(query);
 
                 File file = 
-    //              new File("/home/p306654/Documents/SEfiles/results of sentiment classification/bugzilla_results_classification"+fileNo+".txt");
-                    new File("/home/p306654/Documents/SEfiles/gentooMlistsFiles/results_of_classification_GentooMlists2023.txt");
+                    new File("/your_filepath/results_of_classification_GentooMlists2023.txt");
                         try (BufferedReader buffread = new BufferedReader(new FileReader(file))) { 
                     String sentence;
 
